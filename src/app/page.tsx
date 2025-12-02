@@ -34,7 +34,7 @@ export default function Home() {
     <>
       <Hero
         {...heroContent}
-        backgroundImage="/homepage/hero-magnify.jpg"
+        backgroundImage="/homepage/heroBG.jpg"
         overlayClassName="bg-sky-900/70"
       />
 
