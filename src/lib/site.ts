@@ -50,7 +50,6 @@ export const siteConfig = {
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
       { label: "Resources", href: "/#resources" },
-      { label: "Services Overview", href: "/services" },
       { label: "Contact", href: "/contact" },
     ] satisfies NavItem[],
     services: servicesNav,

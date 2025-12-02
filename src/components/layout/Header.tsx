@@ -52,21 +52,21 @@ export function Header() {
           <div className="flex flex-wrap items-center gap-2 text-white/90">
             <a
               href={siteConfig.contact.phoneHref}
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-1 transition hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded border border-white/30 px-3 py-1 transition hover:bg-white/10"
             >
               <PhoneIcon className="h-3.5 w-3.5" />
               <span>{siteConfig.contact.phone}</span>
             </a>
             <a
               href={siteConfig.contact.emailHref}
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-1 transition hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded border border-white/30 px-3 py-1 transition hover:bg-white/10"
             >
               <MailIcon className="h-3.5 w-3.5" />
               <span>Email</span>
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-1 transition hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded border border-white/30 px-3 py-1 transition hover:bg-white/10"
             >
               <MessageIcon className="h-3.5 w-3.5" />
               <span>Messages</span>
@@ -105,30 +105,25 @@ export function Header() {
           ))}
           <div className="group relative">
             <button
-              className="inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-sm font-medium text-slate-500 transition hover:bg-sky-50 hover:text-slate-900"
+              className="inline-flex items-center gap-1 rounded border border-transparent px-3 py-1.5 text-sm font-medium text-slate-500 transition hover:bg-sky-50 hover:text-slate-900"
               type="button"
             >
               Services
               <ChevronDownIcon className="h-4 w-4 text-slate-400 transition group-hover:text-slate-600" />
             </button>
-            <div className="invisible absolute left-0 top-full mt-3 w-64 rounded-2xl border border-sky-100 bg-white p-3 opacity-0 shadow-2xl shadow-sky-200/60 transition group-hover:visible group-hover:opacity-100">
-              <ul className="space-y-1 text-sm text-slate-600">
+            <div className="invisible absolute left-0 top-full w-56 -translate-y-2 rounded border border-sky-100 bg-white p-2 opacity-0 shadow-xl shadow-sky-200/60 transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              <ul className="space-y-0.5 text-sm text-slate-600">
                 {serviceLinks.map((service) => (
                   <li key={service.href}>
                     <Link
                       href={service.href}
-                      className={`block rounded-xl px-3 py-2 transition hover:bg-slate-50 ${
+                      className={`block rounded px-3 py-2 font-medium transition hover:bg-sky-50 hover:text-slate-900 ${
                         pathname.startsWith(service.href)
-                          ? "bg-slate-50 text-slate-900"
+                          ? "bg-sky-50 text-slate-900"
                           : ""
                       }`}
                     >
-                      <span className="block text-sm font-semibold">
-                        {service.label}
-                      </span>
-                      <span className="block text-xs text-slate-500">
-                        {service.summary}
-                      </span>
+                      {service.label}
                     </Link>
                   </li>
                 ))}
@@ -148,7 +143,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-full border border-sky-100 p-2 text-slate-500 transition hover:border-sky-200 hover:text-slate-900 lg:hidden"
+          className="inline-flex items-center justify-center rounded border border-sky-100 p-2 text-slate-500 transition hover:border-sky-200 hover:text-slate-900 lg:hidden"
           onClick={() => setMobileOpen((open) => !open)}
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}

@@ -54,7 +54,7 @@ export function ContactForm({ fields, serviceOptions }: ContactFormProps) {
         };
 
         return (
-          <label key={field.name} className="flex flex-col gap-2 text-sm font-semibold text-slate-700">
+          <label key={field.name} className="flex flex-col gap-2 text-sm font-semibold text-white/90">
             {field.label}
             {field.type === "textarea" ? (
               <textarea rows={4} {...commonProps} />
