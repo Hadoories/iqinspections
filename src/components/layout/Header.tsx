@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 
 import { siteConfig } from "@/lib/site";
 
@@ -26,7 +26,7 @@ export function Header() {
     return pathname.startsWith(href);
   };
 
-  const socialIconMap: Record<string, JSX.Element> = {
+  const socialIconMap: Record<string, ReactElement> = {
     Facebook: <FacebookIcon className="h-4 w-4" />,
     Instagram: <InstagramIcon className="h-4 w-4" />,
   };
