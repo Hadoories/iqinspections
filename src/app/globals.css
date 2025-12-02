@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --iq-navy: #1c3f76;
+  --iq-blue: #3b82f6;
+  --iq-sky: #cfe5ff;
+  --iq-ice: #f4f8ff;
+  --iq-slate-900: #132445;
+  --iq-slate-600: #566789;
+  --iq-slate-200: #e2ecff;
+  --background: var(--iq-ice);
+  --foreground: var(--iq-slate-900);
+  --radius: 1rem;
+  --shadow-soft: 0 25px 60px rgba(28, 63, 118, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(180deg, #f9fbff 0%, #e8f2ff 45%, #fefeff 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--iq-blue);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--iq-blue);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.section-shell {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.card {
+  border-radius: calc(var(--radius) + 0.5rem);
+  border: 1px solid rgba(28, 63, 118, 0.08);
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--iq-slate-600);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.65rem 1.5rem;
+  font-weight: 600;
+  transition: all 150ms ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2f8ffd, var(--iq-blue));
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(47, 143, 253, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 45px rgba(37, 99, 235, 0.45);
+}
+
+.btn-outline {
+  border: 1px solid rgba(28, 63, 118, 0.2);
+  color: var(--iq-navy);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.btn-outline:hover {
+  border-color: var(--iq-blue);
+  color: var(--iq-blue);
+}
+
+.surface-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.15);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
