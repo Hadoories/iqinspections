@@ -56,7 +56,7 @@ export function ServicesSection() {
   return (
     <section
       ref={ref}
-      className={`section-shell bg-sky-50/80 transition-all duration-700 ${animationClass}`}
+      className={`section-shell overflow-hidden bg-sky-50/80 transition-all duration-700 ${animationClass}`}
     >
       <div className="relative mx-auto max-w-6xl space-y-10 px-4 md:px-6">
         <div
@@ -133,7 +133,7 @@ export function InspectorSpotlightSection() {
   return (
     <section
       ref={ref}
-      className={`section-shell transition-all duration-700 ${animationClass}`}
+      className={`section-shell overflow-hidden transition-all duration-700 ${animationClass}`}
     >
       <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1fr_1.05fr] md:px-6">
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-100 shadow-2xl shadow-slate-900/10">
@@ -313,7 +313,10 @@ export function WhyWorkSection() {
   const { ref, animationClass } = useReveal();
 
   return (
-    <section ref={ref} className={`section-shell py-12 md:py-16 transition-all duration-700 ${animationClass}`}>
+    <section
+      ref={ref}
+      className={`section-shell overflow-hidden py-12 md:py-16 transition-all duration-700 ${animationClass}`}
+    >
       <div className="relative mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.05fr_1fr] md:px-6">
         <div
           aria-hidden="true"
@@ -464,7 +467,7 @@ export function FAQSection() {
   return (
     <section
       ref={ref}
-      className={`section-shell py-12 md:py-16 bg-gradient-to-b from-[#f3f7ff] via-white to-white transition-all duration-700 ${animationClass}`}
+      className={`section-shell overflow-hidden py-12 md:py-16 bg-gradient-to-b from-[#f3f7ff] via-white to-white transition-all duration-700 ${animationClass}`}
     >
       <div className="relative mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[0.75fr_1fr] md:px-6">
         <div
