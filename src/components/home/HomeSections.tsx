@@ -68,7 +68,7 @@ export function ServicesSection() {
           title="Inspections built for every property journey."
           description="Choose the service that matches your transaction."
         />
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 grid-cols-2 lg:grid-cols-3">
           {simpleServices.map((service, index) => {
             const column = index % 3; // 0 = left, 1 = middle, 2 = right
             
@@ -254,7 +254,7 @@ export function ProcessSection() {
                   className="space-y-4 transition-all duration-500"
                   style={{ transitionDelay: `${index * 120}ms` }}
                 >
-                  <span className="text-3xl font-extrabold text-[#0e4f9a]">
+                  <span className="text-3xl font-extrabold text-white drop-shadow-[0_0_8px_rgba(10,60,120,0.45)]">
                     {step.id}
                   </span>
                   <div className="space-y-2">
