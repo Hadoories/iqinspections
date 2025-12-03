@@ -9,6 +9,11 @@ import { siteConfig } from "@/lib/site";
 
 const navLinks = siteConfig.nav.primary;
 const serviceLinks = siteConfig.nav.services;
+const homeLink = navLinks.find((link) => link.href === "/");
+const aboutLink = navLinks.find((link) => link.label === "About");
+const remainingNavLinks = navLinks.filter(
+  (link) => link !== homeLink && link !== aboutLink
+);
 
 export function Header() {
   const pathname = usePathname();
@@ -29,6 +34,24 @@ export function Header() {
   const socialIconMap: Record<string, ReactElement> = {
     Facebook: <FacebookIcon className="h-4 w-4" />,
     Instagram: <InstagramIcon className="h-4 w-4" />,
+  };
+
+  const renderNavLink = (link?: (typeof navLinks)[number]) => {
+    if (!link) {
+      return null;
+    }
+
+    return (
+      <Link
+        key={link.href}
+        href={link.href}
+        className={`transition hover:text-slate-900 ${
+          isActive(link.href) ? "text-slate-900" : ""
+        }`}
+      >
+        {link.label}
+      </Link>
+    );
   };
 
   return (
@@ -64,13 +87,13 @@ export function Header() {
               <MailIcon className="h-3.5 w-3.5" />
               <span>Email</span>
             </a>
-            <Link
-              href="/contact"
+            <a
+              href={siteConfig.contact.smsHref}
               className="inline-flex items-center gap-2 rounded border border-white/30 px-3 py-1 transition hover:bg-white/10"
             >
               <MessageIcon className="h-3.5 w-3.5" />
               <span>Messages</span>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
@@ -92,17 +115,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-slate-500 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`transition hover:text-slate-900 ${
-                isActive(link.href) ? "text-slate-900" : ""
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {renderNavLink(homeLink)}
           <div className="group relative">
             <button
               className="inline-flex items-center gap-1 rounded border border-transparent px-3 py-1.5 text-sm font-medium text-slate-500 transition hover:bg-sky-50 hover:text-slate-900"
@@ -130,13 +143,22 @@ export function Header() {
               </ul>
             </div>
           </div>
+          {renderNavLink(aboutLink)}
+          {remainingNavLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`transition hover:text-slate-900 ${
+                isActive(link.href) ? "text-slate-900" : ""
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <span className="text-sm font-semibold text-slate-500">
-            {siteConfig.contact.phone}
-          </span>
-          <Link href={siteConfig.nav.cta.href} className="btn btn-primary">
+          <Link href={siteConfig.nav.cta.href} className="btn btn-primary rounded-xl lg:rounded-lg">
             {siteConfig.nav.cta.label}
           </Link>
         </div>

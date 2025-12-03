@@ -49,7 +49,7 @@ export const siteConfig = {
     primary: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
-      { label: "Resources", href: "/#resources" },
+      { label: "Resources", href: "/resources" },
       { label: "Contact", href: "/contact" },
     ] satisfies NavItem[],
     services: servicesNav,
@@ -61,6 +61,7 @@ export const siteConfig = {
   contact: {
     phone: "(313) 652-5104",
     phoneHref: "tel:+13136525104",
+    smsHref: "sms:+13136525104",
     email: "hass@iqinspectmi.com",
     emailHref: "mailto:hass@iqinspectmi.com",
     address: "Metro Detroit & surrounding communities",

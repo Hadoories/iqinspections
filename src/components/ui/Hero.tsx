@@ -41,7 +41,7 @@ export function Hero({
         sizes="100vw"
         className="absolute inset-0 -z-20 h-full w-full scale-110 object-cover"
       />
-      <div className="absolute inset-0 -z-10 bg-[#2596be]/70" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0f3d73]/85 via-[#0f4c81]/70 to-[#1f6ac4]/60" />
 
       <div className="section-shell py-24 md:py-32">
         <div className="mx-auto max-w-6xl space-y-8 px-4 md:px-6">
@@ -60,7 +60,7 @@ export function Hero({
             {primaryCta && (
               <Link
                 href={primaryCta.href}
-                className="inline-flex items-center gap-2 rounded bg-white px-8 py-4 text-base font-bold !text-slate-900 shadow-xl transition-transform hover:scale-110"
+                className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-base font-bold !text-slate-900 shadow-xl transition-transform hover:scale-110"
               >
                 {primaryCta.label}
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

@@ -9,7 +9,7 @@ type FAQAccordionProps = {
 };
 
 export function FAQAccordion({ items }: FAQAccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   if (!items.length) return null;
 

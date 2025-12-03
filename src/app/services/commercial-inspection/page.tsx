@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ContactForm } from "@/components/ui/ContactForm";
+import { RevealSection } from "@/components/ui/RevealSection";
 
 const contactFields = [
   { name: "name", label: "Full Name", type: "text" as const, required: true },
@@ -24,16 +25,16 @@ export default function CommercialInspectionPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative isolate overflow-hidden bg-white text-white">
+      <RevealSection className="relative isolate overflow-hidden bg-white text-white">
         <Image
-          src="/homepage/heroBG.jpg"
-          alt=""
+          src="/homepage/commercial Inspection.jpeg"
+          alt="Modern commercial building exterior with reflective glass"
           priority
           fill
           sizes="100vw"
           className="absolute inset-0 -z-20 h-full w-full scale-110 object-cover"
         />
-        <div className="absolute inset-0 -z-10 bg-[#2596be]/70" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0f3d73]/85 via-[#0f4c81]/70 to-[#1f6ac4]/60" />
 
         <div className="section-shell py-24 md:py-32">
           <div className="mx-auto max-w-6xl space-y-8 px-4 md:px-6">
@@ -59,10 +60,10 @@ export default function CommercialInspectionPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* What's Included Section */}
-      <section className="section-shell bg-white">
+      <RevealSection className="section-shell bg-white">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">Key Features</p>
@@ -96,10 +97,10 @@ export default function CommercialInspectionPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Property Types Section */}
-      <section className="section-shell bg-slate-50">
+      <RevealSection className="section-shell bg-slate-50">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">Property Types</p>
@@ -125,10 +126,10 @@ export default function CommercialInspectionPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* How It Works Section */}
-      <section className="section-shell bg-white">
+      <RevealSection className="section-shell bg-white">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">Step To Get Service</p>
@@ -159,10 +160,10 @@ export default function CommercialInspectionPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* FAQ Section */}
-      <section className="section-shell bg-slate-50">
+      <RevealSection className="section-shell bg-slate-50">
         <div className="mx-auto max-w-4xl px-4 md:px-6">
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">Knowledge</p>
@@ -190,10 +191,10 @@ export default function CommercialInspectionPage() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Contact Form Section */}
-      <section className="section-shell bg-[#1e3a5f]">
+      <RevealSection className="section-shell bg-[#1e3a5f]">
         <div className="mx-auto max-w-4xl px-4 md:px-6">
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">Schedule A Call</p>
@@ -205,7 +206,7 @@ export default function CommercialInspectionPage() {
             <ContactForm fields={contactFields} serviceOptions={serviceOptions} />
           </div>
         </div>
-      </section>
+      </RevealSection>
     </>
   );
 }

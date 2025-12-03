@@ -1,11 +1,11 @@
 import {
-  CertificationsSection,
+  CredibilityBandSection,
   FAQSection,
   InspectorSpotlightSection,
   ProcessSection,
-  ResourcesSection,
   ServicesSection,
   TestimonialsSection,
+  WhyWorkSection,
 } from "@/components/home/HomeSections";
 import { Hero } from "@/components/ui/Hero";
 import { homeHero } from "@/lib/content";
@@ -28,10 +28,10 @@ export default function Home() {
       <ServicesSection />
       <InspectorSpotlightSection />
       <ProcessSection />
-      <TestimonialsSection />
-      <ResourcesSection />
+      <WhyWorkSection />
       <FAQSection />
-      <CertificationsSection />
+      <TestimonialsSection />
+      <CredibilityBandSection />
     </>
   );
 }

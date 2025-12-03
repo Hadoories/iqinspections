@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { IconFeature } from "@/components/ui/IconFeature";
+import { RevealSection } from "@/components/ui/RevealSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { homeProcess, servicesOverviewCards } from "@/lib/content";
@@ -9,7 +10,7 @@ import { siteConfig } from "@/lib/site";
 export default function ServicesOverviewPage() {
   return (
     <div className="space-y-16">
-      <section className="section-shell bg-sky-50/80">
+      <RevealSection className="section-shell bg-sky-50/80">
         <div className="mx-auto max-w-6xl space-y-10 px-4 md:px-6">
           <SectionHeading
             align="left"
@@ -23,9 +24,9 @@ export default function ServicesOverviewPage() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealSection>
 
-      <section className="section-shell bg-white/80">
+      <RevealSection className="section-shell bg-white/80">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[0.9fr_1.1fr] md:px-6">
           <div className="space-y-4">
             <SectionHeading
@@ -49,7 +50,7 @@ export default function ServicesOverviewPage() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealSection>
     </div>
   );
 }

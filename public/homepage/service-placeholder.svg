@@ -1,0 +1,15 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d7e9ff"/>
+      <stop offset="50%" stop-color="#f4f9ff"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#grad)"/>
+  <g fill="#7aa5d9" font-family="Arial, Helvetica, sans-serif" font-size="32" text-anchor="middle">
+    <text x="600" y="400">Service Image Placeholder</text>
+    <text x="600" y="450" font-size="20">Replace with your own photo</text>
+  </g>
+</svg>
+

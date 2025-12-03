@@ -4,110 +4,154 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
 export function Footer() {
+  const quickLinks = [
+    { label: "Homepage", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   return (
-    <footer className="border-t border-sky-100 bg-gradient-to-b from-sky-50 via-white to-white text-slate-700">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 md:px-6 lg:flex-row lg:justify-between">
-        <div className="max-w-md space-y-4">
-          <Link href="/" className="inline-flex items-center gap-3 text-slate-800">
-            <Image
-              src="/homepage/IQ-Inspections-BLACK-1024x295.png"
-              alt="IQ Inspections logo"
-              width={200}
-              height={60}
-              className="h-12 w-auto object-contain"
-            />
-          </Link>
-          <p className="text-sm text-slate-500">{siteConfig.description}</p>
-          <div className="space-y-1 text-sm">
-            <p>{siteConfig.contact.address}</p>
-            <p>{siteConfig.contact.hours}</p>
+    <footer className="bg-gradient-to-r from-[#c9e1ff] via-[#e3f0ff] to-[#f4f9ff] text-slate-800">
+      <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr_0.9fr]">
+          <div className="space-y-5">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Image
+                src="/homepage/IQ-Inspections-BLACK-1024x295.png"
+                alt="IQ Inspections logo"
+                width={220}
+                height={70}
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/homepage/IMG_6618-removebg-preview-1.png"
+                alt="ICA Certified Inspector badge"
+                width={72}
+                height={72}
+                className="h-16 w-auto object-contain"
+              />
+            </div>
+            <div className="flex items-center gap-4 text-slate-600">
+              {siteConfig.social.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={item.label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#4f8fe5] text-white transition hover:bg-[#3a79c8]"
+                >
+                  {item.label === "Facebook" ? (
+                    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+                      <path
+                        d="M13.5 8H16V5h-2.5C11.57 5 10 6.57 10 8.5V10H8v3h2v7h3v-7h2.1l.4-3H13v-1.5c0-.28.22-.5.5-.5Z"
+                        className="fill-white"
+                      />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+                      <path
+                        d="M7 3C4.24 3 2 5.24 2 8v8c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V8c0-2.76-2.24-5-5-5H7Z"
+                        className="fill-white/15"
+                      />
+                      <path
+                        d="M7 5h10c1.66 0 3 1.34 3 3v8c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V8c0-1.66 1.34-3 3-3Zm9.5 1.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-5.5 1C8.57 7.5 6.5 9.57 6.5 12s2.07 4.5 4.5 4.5 4.5-2.07 4.5-4.5-2.07-4.5-4.5-4.5Zm0 2c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5S8.5 13.88 8.5 12 9.62 9.5 11 9.5Z"
+                        className="fill-white"
+                      />
+                    </svg>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <FooterLinkColumn title="Quick Links" links={quickLinks} />
+
+          <FooterLinkColumn
+            title="Our Services"
+            links={siteConfig.nav.services.map((service) => ({
+              label: service.label,
+              href: service.href,
+            }))}
+          />
+
+          <div className="rounded-2xl bg-[#0f5fab] p-6 text-white shadow-2xl shadow-blue-900/20">
+            <p className="text-lg font-semibold">Let’s Connect</p>
+            <div className="mt-4 space-y-4 text-sm text-white/90">
+              <div>
+                <p className="text-xs uppercase tracking-wide text-white/60">
+                  Telephone
+                </p>
+                <a
+                  href={siteConfig.contact.phoneHref}
+                  className="mt-1 inline-flex items-center gap-2 font-semibold text-white"
+                >
+                  {siteConfig.contact.phone}
+                </a>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-white/60">
+                  Email Address
+                </p>
+                <a
+                  href={siteConfig.contact.emailHref}
+                  className="mt-1 inline-flex items-center gap-2 text-white"
+                >
+                  {siteConfig.contact.email}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-1 flex-wrap gap-10 text-sm">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-              Navigate
+        <div className="mt-12 border-t border-slate-200/60 pt-6 text-sm text-slate-600">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <p>
+              Copyright © {new Date().getFullYear()} {siteConfig.name}
             </p>
-            <ul className="mt-3 space-y-2">
-              {siteConfig.nav.primary.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-slate-600 transition hover:text-slate-900"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-              Services
-            </p>
-            <ul className="mt-3 space-y-2">
-              {siteConfig.nav.services.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-slate-600 transition hover:text-slate-900"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-              Contact
-            </p>
-            <ul className="mt-3 space-y-2 text-slate-600">
-              <li>
-                <a href={siteConfig.contact.phoneHref} className="hover:text-slate-900">
-                  {siteConfig.contact.phone}
-                </a>
-              </li>
-              <li>
-                <a href={siteConfig.contact.emailHref} className="hover:text-slate-900">
-                  {siteConfig.contact.email}
-                </a>
-              </li>
-              <li className="flex gap-4">
-                {siteConfig.social.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-slate-500 transition hover:text-slate-900"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-sky-100">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between md:px-6">
-          <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/privacy" className="hover:text-slate-900">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-slate-900">
-              Terms
-            </Link>
-            <Link href={siteConfig.nav.cta.href} className="hover:text-slate-900">
-              Book an Inspection
-            </Link>
+            <div className="flex flex-wrap gap-6 text-sm font-semibold">
+              <Link href={siteConfig.nav.cta.href} className="transition hover:text-slate-900">
+                Schedule A Call
+              </Link>
+              <Link href="/terms" className="transition hover:text-slate-900">
+                Term Of Use
+              </Link>
+              <Link href="/privacy" className="transition hover:text-slate-900">
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+type FooterLinkColumnProps = {
+  title: string;
+  links: { label: string; href: string }[];
+};
+
+function FooterLinkColumn({ title, links }: FooterLinkColumnProps) {
+  return (
+    <div>
+      <p className="text-xl font-semibold text-slate-900">{title}</p>
+      <ul className="mt-4 space-y-2 text-sm text-slate-600">
+        {links.map((link) => (
+          <li key={link.href} className="flex items-center gap-3">
+            <span className="text-lg font-bold text-slate-500">›</span>
+            <Link
+              href={link.href}
+              className="transition hover:text-slate-900"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
