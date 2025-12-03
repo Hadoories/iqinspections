@@ -13,9 +13,9 @@ export function Footer() {
   return (
     <footer className="bg-gradient-to-r from-[#c9e1ff] via-[#e3f0ff] to-[#f4f9ff] text-slate-800">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr_0.9fr]">
+        <div className="grid justify-items-center gap-10 text-center lg:grid-cols-[1.3fr_1fr_1fr_0.9fr] lg:justify-items-start lg:text-left">
           <div className="space-y-5">
-            <Link href="/" className="inline-flex items-center gap-3">
+            <Link href="/" className="inline-flex flex-col items-center gap-3 lg:flex-row lg:items-center">
               <Image
                 src="/homepage/IQ-Inspections-BLACK-1024x295.png"
                 alt="IQ Inspections logo"
@@ -24,7 +24,7 @@ export function Footer() {
                 className="h-12 w-auto object-contain"
               />
             </Link>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center gap-4 lg:justify-start">
               <Image
                 src="/homepage/IMG_6618-removebg-preview-1.png"
                 alt="ICA Certified Inspector badge"
@@ -33,7 +33,7 @@ export function Footer() {
                 className="h-16 w-auto object-contain"
               />
             </div>
-            <div className="flex items-center gap-4 text-slate-600">
+            <div className="flex items-center justify-center gap-4 text-slate-600 lg:justify-start">
               {siteConfig.social.map((item) => (
                 <a
                   key={item.href}
@@ -77,7 +77,7 @@ export function Footer() {
             }))}
           />
 
-          <div className="rounded-2xl bg-[#0f5fab] p-6 text-white shadow-2xl shadow-blue-900/20">
+          <div className="w-full max-w-md rounded-2xl bg-[#0f5fab] p-6 text-center text-white shadow-2xl shadow-blue-900/20 lg:text-left">
             <p className="text-lg font-semibold">Let’s Connect</p>
             <div className="mt-4 space-y-4 text-sm text-white/90">
               <div>
@@ -86,7 +86,7 @@ export function Footer() {
                 </p>
                 <a
                   href={siteConfig.contact.phoneHref}
-                  className="mt-1 inline-flex items-center gap-2 font-semibold text-white"
+                  className="mt-1 inline-flex items-center justify-center gap-2 font-semibold text-white lg:justify-start"
                 >
                   {siteConfig.contact.phone}
                 </a>
@@ -97,7 +97,7 @@ export function Footer() {
                 </p>
                 <a
                   href={siteConfig.contact.emailHref}
-                  className="mt-1 inline-flex items-center gap-2 text-white"
+                  className="mt-1 inline-flex items-center justify-center gap-2 text-white lg:justify-start"
                 >
                   {siteConfig.contact.email}
                 </a>
@@ -107,11 +107,11 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-slate-200/60 pt-6 text-sm text-slate-600">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <p>
+          <div className="flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+            <p className="mx-auto md:mx-0">
               Copyright © {new Date().getFullYear()} {siteConfig.name}
             </p>
-            <div className="flex flex-wrap gap-6 text-sm font-semibold">
+            <div className="flex flex-wrap justify-center gap-6 text-sm font-semibold md:justify-end">
               <Link href={siteConfig.nav.cta.href} className="transition hover:text-slate-900">
                 Schedule A Call
               </Link>
@@ -136,11 +136,11 @@ type FooterLinkColumnProps = {
 
 function FooterLinkColumn({ title, links }: FooterLinkColumnProps) {
   return (
-    <div>
+    <div className="w-full text-center lg:text-left">
       <p className="text-xl font-semibold text-slate-900">{title}</p>
       <ul className="mt-4 space-y-2 text-sm text-slate-600">
         {links.map((link) => (
-          <li key={link.href} className="flex items-center gap-3">
+          <li key={link.href} className="flex items-center justify-center gap-3 lg:justify-start">
             <span className="text-lg font-bold text-slate-500">›</span>
             <Link
               href={link.href}

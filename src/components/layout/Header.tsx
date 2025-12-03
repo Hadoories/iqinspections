@@ -99,7 +99,7 @@ export function Header() {
         </div>
       </div>
       <div className="border-b border-sky-100 bg-gradient-to-b from-white/95 via-white/90 to-white/80">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-1 px-2.5 py-1.5 text-center sm:px-4 sm:py-3 md:flex-row md:items-center md:justify-between md:gap-0 md:px-6 md:text-left">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-2.5 py-1.5 sm:px-4 sm:py-3 md:gap-0 md:px-6">
         <Link
           href="/"
           aria-label="IQ Inspections home"
@@ -111,7 +111,7 @@ export function Header() {
             width={220}
             height={62}
             priority
-            className="h-12 w-auto object-contain"
+            className="h-3 w-auto object-contain sm:h-10 lg:h-12"
           />
         </Link>
 
@@ -166,7 +166,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded border border-sky-100 p-2 text-slate-500 transition hover:border-sky-200 hover:text-slate-900 lg:hidden"
+          className="ml-auto inline-flex items-center justify-center rounded border border-sky-100 p-2 text-slate-500 transition hover:border-sky-200 hover:text-slate-900 lg:hidden"
           onClick={() => setMobileOpen((open) => !open)}
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}
