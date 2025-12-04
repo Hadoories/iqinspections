@@ -51,13 +51,15 @@ const contactCards = [
 ];
 
 export default function ContactPage() {
-  const [formStatus, setFormStatus] = useState<"idle" | "success">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     address: "",
     service: "",
+    message: "",
     preferredContact: [] as string[],
   });
 
@@ -71,6 +73,51 @@ export default function ContactPage() {
     formData.phone.trim() &&
     formData.address.trim() &&
     formData.service.trim();
+
+  const resetForm = () =>
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      service: "",
+      message: "",
+      preferredContact: [],
+    });
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!isFormComplete) {
+      return;
+    }
+
+    setFormStatus("loading");
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch("/api/ghl-webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          preferredContact: formData.preferredContact,
+          source: "Schedule a Call form",
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error ?? "Unable to submit request. Please try again.");
+      }
+
+      setFormStatus("success");
+      resetForm();
+      setTimeout(() => setFormStatus("idle"), 5000);
+    } catch (error) {
+      setFormStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to submit request.");
+    }
+  };
 
   return (
     <div className="space-y-16 bg-gradient-to-b from-[#f0f6ff] via-white to-[#edf3ff]">
@@ -120,14 +167,7 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="rounded-[32px] border border-white/50 bg-white p-6 shadow-[0_35px_90px_rgba(15,76,129,0.15)]">
-              <form
-                className="space-y-4"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  setFormStatus("success");
-                  setTimeout(() => setFormStatus("idle"), 5000);
-                }}
-              >
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid gap-4 md:grid-cols-2">
                   <FormField
                     label="Name"
@@ -185,6 +225,8 @@ export default function ContactPage() {
                       name="message"
                       rows={4}
                       className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-slate-900 focus:outline-none"
+                      value={formData.message}
+                      onChange={(event) => handleFieldChange("message", event.target.value)}
                     />
                   </label>
                 </div>
@@ -217,15 +259,26 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   className={`w-full rounded-2xl bg-gradient-to-r from-[#4a9ffd] via-[#1f6ed3] to-[#0f4c81] px-6 py-3 text-base font-semibold text-white shadow-[0_15px_40px_rgba(15,76,129,0.35)] transition ${
-                    isFormComplete ? "hover:scale-105" : "opacity-50"
+                    isFormComplete && formStatus !== "loading" ? "hover:scale-105" : "opacity-50"
                   }`}
-                  disabled={!isFormComplete}
+                  disabled={!isFormComplete || formStatus === "loading"}
                 >
-                  Send
+                  {formStatus === "loading" ? "Sending..." : "Send"}
                 </button>
                 {formStatus === "success" && (
-                  <p className="rounded-2xl border border-green-100 bg-green-50 px-4 py-3 text-sm font-semibold text-green-700">
+                  <p
+                    className="rounded-2xl border border-green-100 bg-green-50 px-4 py-3 text-sm font-semibold text-green-700"
+                    aria-live="polite"
+                  >
                     Thanks! Your request is received—we’ll confirm your inspection time shortly.
+                  </p>
+                )}
+                {formStatus === "error" && errorMessage && (
+                  <p
+                    className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700"
+                    aria-live="assertive"
+                  >
+                    {errorMessage}
                   </p>
                 )}
               </form>

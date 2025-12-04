@@ -199,7 +199,7 @@ export default function CommercialInspectionPage() {
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">Schedule A Call</p>
             <h2 className="text-3xl font-bold text-white md:text-4xl">Get Service Booking Quotation</h2>
-            <p className="mt-4 text-white/80">Fill out the form below and we'll get back to you within 24 hours.</p>
+            <p className="mt-4 text-white/80">Fill out the form below and we&apos;ll get back to you within 24 hours.</p>
           </div>
 
           <div className="rounded border border-white/20 bg-white/10 p-8 backdrop-blur">

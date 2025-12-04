@@ -25,7 +25,8 @@ export function ContactForm({ fields, serviceOptions }: ContactFormProps) {
   );
 
   const [formState, setFormState] = useState<FormState>(initialState);
-  const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -34,11 +35,33 @@ export function ContactForm({ fields, serviceOptions }: ContactFormProps) {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStatus("success");
-    setFormState(initialState);
-    window.setTimeout(() => setStatus("idle"), 5000);
+    setStatus("submitting");
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch("/api/ghl-webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formState,
+          source: "Service page contact",
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error ?? "Unable to submit request. Please try again.");
+      }
+
+      setStatus("success");
+      setFormState(initialState);
+      window.setTimeout(() => setStatus("idle"), 5000);
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to send request.");
+    }
   };
 
   return (
@@ -73,12 +96,20 @@ export function ContactForm({ fields, serviceOptions }: ContactFormProps) {
           </label>
         );
       })}
-      <button type="submit" className="btn btn-primary w-full justify-center">
-        Send request
+      <button type="submit" className="btn btn-primary w-full justify-center" disabled={status === "submitting"}>
+        {status === "submitting" ? "Sending..." : "Send request"}
       </button>
       {status === "success" && (
-        <p className="rounded-2xl border border-green-100 bg-green-50 px-4 py-3 text-sm text-green-700">
+        <p
+          className="rounded-2xl border border-green-100 bg-green-50 px-4 py-3 text-sm text-green-700"
+          aria-live="polite"
+        >
           Thanks for reaching out! We’ll confirm availability shortly.
+        </p>
+      )}
+      {status === "error" && errorMessage && (
+        <p className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700" aria-live="assertive">
+          {errorMessage}
         </p>
       )}
     </form>
