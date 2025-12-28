@@ -18,8 +18,8 @@ const insightColumns = [
     bullets: [
       "Gather seller disclosures and prior repair receipts",
       "Confirm utilities are on for testing systems",
-      "Bring a notebook or shareable doc for questions",
-      "Plan time for a recap call after reviewing the report",
+      "Arrive 15 minutes early to meet the inspector on-site",
+      "Have your real estate agent's contact information ready",
     ],
   },
   {
