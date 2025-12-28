@@ -88,8 +88,8 @@ export default function CommercialInspectionPage() {
               <p className="text-sm text-slate-600">Water supply, drainage, sprinkler systems, and fire protection.</p>
             </div>
             <div className="rounded border border-slate-200 bg-gradient-to-br from-white to-sky-50 p-6">
-              <h3 className="mb-2 text-lg font-semibold text-slate-900">ADA Compliance</h3>
-              <p className="text-sm text-slate-600">Accessibility features and compliance with ADA requirements.</p>
+              <h3 className="mb-2 text-lg font-semibold text-slate-900">Roofing</h3>
+              <p className="text-sm text-slate-600">Roof structure, materials, drainage, and weatherproofing assessment.</p>
             </div>
             <div className="rounded border border-slate-200 bg-gradient-to-br from-white to-sky-50 p-6">
               <h3 className="mb-2 text-lg font-semibold text-slate-900">Site & Parking</h3>
@@ -174,7 +174,7 @@ export default function CommercialInspectionPage() {
             <div className="rounded border border-slate-200 bg-white p-6">
               <h3 className="mb-2 text-lg font-semibold text-slate-900">Time Needed for Evaluation</h3>
               <p className="text-sm text-slate-600">
-                Commercial inspections vary based on building size and complexity. Most take 1-2 days for thorough evaluation and documentation.
+                Commercial inspections vary based on building size and complexity. Most take 4-8 hours for thorough evaluation and documentation.
               </p>
             </div>
             <div className="rounded border border-slate-200 bg-white p-6">

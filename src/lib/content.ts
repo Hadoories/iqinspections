@@ -352,7 +352,7 @@ const serviceDetailsMap: Record<ServiceSlug, ServiceDetail> = {
       {
         step: "02",
         title: "On-site evaluation",
-        description: "Our team documents systems, interviews facility staff, and collects media within 1–2 days.",
+        description: "Our team documents systems, interviews facility staff, and collects media within 4-8 hours.",
       },
       {
         step: "03",
