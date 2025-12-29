@@ -97,7 +97,7 @@ export const servicePageContent: Record<string, ServicePageContent> = {
       title: "Knowledge Answered Service",
       entries: defaultKnowledge(
         "Pick a time online or call us. Share where the clean-out is located and we’ll prep the equipment.",
-        "Typical scopes take 60–90 minutes, including video capture and review with you on-site.",
+        "Typical scopes take 30–60 minutes, including video capture and review with you on-site.",
         "Schedule through our booking page or ring us directly. We arrive with a high-resolution camera system to document the lateral line.",
         "Yes. After hydro-jetting or repairs, we can re-scope to verify the line is clear and properly repaired."
       ),

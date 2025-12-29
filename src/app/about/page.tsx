@@ -40,16 +40,16 @@ const businessStoryCopy = [
 
 const certificateSlides = [
   {
-    src: "/homepage/ICA HASSSSS-e1754926807998-1024x791.jpeg",
-    alt: "ICA Certified Home Inspector certificate awarded to Hassan Alzubaidi",
+    src: "/homepage/ICA AWARD-1024x794.png",
+    alt: "Inspection Certification Associates award for Hassan Alzubaidi",
   },
   {
     src: "/homepage/HASSSS completion_4701-1024x794.png",
     alt: "Certificate of completion for sewer camera inspection training",
   },
   {
-    src: "/homepage/ICA AWARD-1024x794.png",
-    alt: "Inspection Certification Associates award for Hassan Alzubaidi",
+    src: "/homepage/ICA HASSSSS-e1754926807998-1024x791.jpeg",
+    alt: "ICA Certified Home Inspector certificate awarded to Hassan Alzubaidi",
   },
 ];
 
